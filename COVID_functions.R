@@ -1,15 +1,13 @@
-#COVID project functions:
-# library("msa")
-# if (!requireNamespace("BiocManager", quietly = TRUE))
-#   install.packages("BiocManager")
-# BiocManager::install("Biostrings")
-# BiocManager::install("DECIPHER")
+# General functions:
+ library("msa")
+ if (!requireNamespace("BiocManager", quietly = TRUE))
+   install.packages("BiocManager")
+ BiocManager::install("Biostrings")
+ BiocManager::install("DECIPHER")
 
-
-# if (!requireNamespace("BiocManager", quietly = TRUE))
-#   install.packages("BiocManager")
-# 
-# BiocManager::install("msa")
+ if (!requireNamespace("BiocManager", quietly = TRUE))
+   install.packages("BiocManager")
+ BiocManager::install("msa")
 
 library("seqinr")
 library("ape")
@@ -80,29 +78,6 @@ return_only_tree_seqs = function(seqs,tree){
   return(new_seqs)
 }
 
-# return_only_tree_seqs = function(seqs,tree){
-#   # sorted_seqs_names = sort(names(seqs),index.return = TRUE)
-#   sorted_seqs_names = sort(names(seqs))
-#   sorted_tree_names = sort(tree$tip.label)
-#   i=1
-#   j=1
-#   irrelevant_seqs = NULL
-#   relevant_seqs = NULL
-#   while( (i <= length(sorted_seqs_names)) && (j <= length(sorted_tree_names))){
-#     if (sorted_seqs_names[i] != sorted_tree_names[j]){
-#       irrelevant_seqs = c(irrelevant_seqs,i)
-#       i = i+1
-#     }else{
-#       relevant_seqs = c(relevant_seqs,i)
-#       i = i+1
-#       j = j+1
-#     }
-#     # print(paste("i=",i))
-#   }
-#   new_seqs = seqs[sorted_seqs_names[relevant_seqs]]
-#   return(new_seqs)
-# }
-
 #find phyDat_seqs site patterns for msa output
 find_site_patterns = function(aligned_seqs){
   site_patterns = NULL
@@ -116,20 +91,6 @@ find_site_patterns = function(aligned_seqs){
   }
   return(site_patterns)
 }
-
-# # Finds site patterns for decipher output
-# find_site_patterns = function(aligned_seqs){
-#   site_patterns = NULL
-#   for (i in 1:length(aligned_seqs[1][[1]])){
-#     print(i)
-#     curr_site_pattern = NULL
-#     for (j in 1:length(aligned_seqs)){
-#       curr_site_pattern = c(curr_site_pattern, aligned_seqs[j][[1]][i])   
-#     }
-#     site_patterns = c(site_patterns,paste0(curr_site_pattern, collapse = " "))
-#   }
-#   return(site_patterns)
-# }
 
 change_to_letters = function(sub_col){
   sub_col[which(sub_col==15)] = "-"
