@@ -1,4 +1,3 @@
-# begin_path = "C:/Users/ifog/Dropbox/covid/new2/"
 begin_path = "/Users/keren/Dropbox/covid/new2/"
 setwd(begin_path)
 source("COVID_functions.R")
