@@ -25,7 +25,10 @@ I provide here (in the file "main.R") an example for creating this matrix when n
 
 "testing_seqs.aln": Aligned test sequences.
 
-* All input variables above should be saved in a directory called "vars" under the main directory.
+* All input variables above should be saved in a directory called "vars" under the main directory. We provide a very small example of training and test sequences (200 sequences each) along with a phylogenetic tree inferred for the training sequences, downloaded from the NCBI website. https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType_s=Nucleotide&VirusLineage_ss=SARS-CoV-2,%20taxid:2697049
+
+# Getting started
+In order to use our workflow, please clone the repository (git clone 
 
 
 # How to cite
