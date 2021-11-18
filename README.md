@@ -43,8 +43,11 @@ For higher efficiency, some parts of the code are needed to be done in parallel 
 # Running time note
 Some parts of the "main.R" code take a very long time and should be done in parallel. We wrote some of them as the inner part of for loops in the "main.R" code so that it will be easier to run them on multiple cores.
 The time consuming functions are:
+
 "ASR.R" (Ancestral sequence reconstruction per site).
+
 The function "datasets" in "datasets.R".
+
 The function "get_unique_regs" in "get_unique_regs.R".
 
 # How to cite
