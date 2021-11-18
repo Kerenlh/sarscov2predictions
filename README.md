@@ -28,7 +28,18 @@ I provide here (in the file "main.R") an example for creating this matrix when n
 * All input variables above should be saved in a directory called "vars" under the main directory. We provide a very small example of training and test sequences (200 sequences each) along with a phylogenetic tree inferred for the training sequences, downloaded from the NCBI website. https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType_s=Nucleotide&VirusLineage_ss=SARS-CoV-2,%20taxid:2697049
 
 # Getting started
-In order to use our workflow, please clone the repository (git clone 
+In order to use our workflow, please clone the repository (git clone https://github.com/Kerenlh/sarscov2predictions.git).
+Replace the input variables in the ./vars directory with your desired reference sequence, aligned training and test sequences and a phylogenetic tree for the training sequecnes. Also create "site_to_alignment" and "site_to_alignment_testing" as explained above and add them to the ./vars directory.
+
+
+# Important note!
+Some parts of the "main.R" code take a very long time and should be done in parallel. I wrote some of them as the inner part of for loops in the "main.R" code so that it will be easier to run them on multiple cores.
+The time consuming functions are:
+"ASR.R" (Ancestral sequence reconstruction per site).
+The function "datasets" in "datasets.R".
+The function "get_unique_regs" in "get_unique_regs.R".
+
+
 
 
 # How to cite
