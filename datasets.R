@@ -350,7 +350,7 @@ datasets_preprocess = function(codons_table,testing_flag){
     input_iterate.testing = input_iterate
     codons_table_testing = codons_table
     
-    save(codons_table_testing,file = "codons_table_testing")
+    save(codons_table_testing,file = "codons_table_testing_partial")
     save(iterate_vals.testing,file = "iterate_vals.testing")
     save(data_rows.testing,file = "data_rows.testing")
     save(output.testing,file = "output.testing")

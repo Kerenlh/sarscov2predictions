@@ -9,10 +9,9 @@ multiply_exposures = function(curr_codons_table,col_name_to_multiply,col_name_to
 }
 
 predict_substitutions = function(begin_path,codons_table_training,codons_table_testing,
-                                 iterate_vals,iterate_vals.testing,unique_models,details,model_ids,
-                                 num_first_models,output,output.testing,data_input,data_input.testing,
-                                 data_output,data_output.testing,binary_data,binary_data.testing){
-  source(paste0(begin_path,"regression_functions.R"))
+                                 unique_models,details,model_ids,num_first_models){
+  source(paste0(begin_path,"datasets.R"))
+  
   diff_seqs_num_flag = 1
   if (diff_seqs_num_flag==1){
     codons_table_testing = codons_table_testing[which(codons_table_testing$diff_seqs_num==0 |
@@ -23,6 +22,15 @@ predict_substitutions = function(begin_path,codons_table_training,codons_table_t
   }
   # if diff_seq_num_flag==2 predict for all rows of codons_table_testing
   
+  datasets_preprocess(codons_table_testing,testing_flag = 1) # generate data_input.testing,...
+  setwd(paste0(begin_path,"vars/"))
+  load("iterate_vals"); load("iterate_vals.testing")
+  load("output"); load("output.testing")
+  load("data_input"); load("data_input.testing")
+  load("data_output"); load("data_output.testing")
+  load("binary_data"); load("binary_data.testing")
+  
+  source(paste0(begin_path,"regression_functions.R"))
   all_sites = unique(codons_table_testing$ref_site)
   
   # Insert syn/non_syn exposure to the exposure:

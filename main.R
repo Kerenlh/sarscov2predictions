@@ -417,20 +417,11 @@ source(paste0(begin_path,"predict_substitutions.R"))
 setwd(paste0(begin_path,"vars/"))
 load("codons_table")
 load("codons_table_testing")
-source(paste0(begin_path,"datasets.R"))
-datasets_preprocess(codons_table_testing,testing_flag = 1) # generate data_input.testing,...
-load("iterate_vals"); load("iterate_vals.testing")
+load("model_ids")
 load("unique_models")
 load("details.12")
-load("output"); load("output.testing")
-load("data_input"); load("data_input.testing")
-load("data_output"); load("data_output.testing")
-load("binary_data"); load("binary_data.testing")
-load("model_ids")
 predict_substitutions(begin_path,codons_table_training = codons_table,codons_table_testing,
-                      iterate_vals,iterate_vals.testing,unique_models,details,model_ids,
-                      num_first_models,output,output.testing,data_input,data_input.testing,
-                      data_output,data_output.testing,binary_data,binary_data.testing)
+                      unique_models,details,model_ids,num_first_models)
 
 #######################################################
 # Get AUC results and a lift plot for the examined model. The results matrix contains AUC and 3%

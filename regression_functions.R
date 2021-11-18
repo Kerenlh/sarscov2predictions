@@ -209,7 +209,7 @@ binary_matrix = function(data,input_iterate){
   return(as.matrix(tmp1))
 }
 
-process_data = function(curr_data,selected_input,selected_output,curr_details,count,output_num){
+process_data_regressions = function(curr_data,selected_input,selected_output,curr_details,output_num){
   curr_details[,colnames(selected_input)] = selected_input
   curr_details[,"output"] = output_num
   curr_details[,"rows_num"] = dim(curr_data)[1]
@@ -271,7 +271,7 @@ process_data = function(curr_data,selected_input,selected_output,curr_details,co
   return(curr_details)
 }
 
-is_neighbor_same_as_codon = function(curr_data,rm_cols,count,selected_input){
+is_neighbor_same_as_codon = function(curr_data,rm_cols,selected_input){
   if (is.na(selected_input[1,"codon.pos"])==FALSE){
     if (selected_input[1,"codon.pos"]==1){
       rm_cols = c(rm_cols,which(colnames(curr_data)=="R.neighbor"))
@@ -491,13 +491,12 @@ get_data = function(curr_row,iterate_vals,output,data_input,data_output,binary_d
           rm_cols = c(rm_cols,v)
         }
       }
-      rm_cols = is_neighbor_same_as_codon(curr_data,rm_cols,count,selected_input)
+      rm_cols = is_neighbor_same_as_codon(curr_data,rm_cols,selected_input)
       if (is.na(rm_cols)[1]==FALSE){
         curr_data = curr_data[,-rm_cols]
       }
       if (is.na(dim(curr_data)[1])==FALSE){
-        curr_details = process_data(curr_data,selected_input,
-                                    selected_output,curr_details,count,i)
+        curr_details = process_data_regressions(curr_data,selected_input,selected_output,curr_details,i)
       }
     }
   }
