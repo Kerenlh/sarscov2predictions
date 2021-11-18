@@ -13,7 +13,6 @@ The file "main.R" contains detailed comments and the entire workflow:
 5. The regression results for all sub-models are combined to find the overall AIC score of each model, and models are then ranked by their AIC score (minimum of the Poisson and Negative Binomial AIC scores). All ranked models are saved as "unique_models".
 6. Testing: Substitutions are inferred only for sites with no substitutions along the phylogenetic training tree, that their test sequences had at most one base different from the reference sequence base. A table containing all test states, their inferred substitutions, and site-based information is created ("codons_table_testing"). The top 3 models (the number can be changed by changing "num_first_models" in the "main.R" file) evaluated from the training data are used to predict substitutions for the leaves of the training phylogenetic tree. The results are then compared to the substitutions inferred from the test sequences. The code produces AUC and 3% Lift results for the top models and for the two null models mentioned in the paper, as well as a Lift plot for a selected model (saved as "results" and "lift_plot", please see the comments in the "main.R" file to control the plot).
 
-
 # Input variables
 In order to apply our method, the following input variables are required:
 
@@ -35,11 +34,9 @@ We provide here (in the file "main.R") an example for creating this matrix when 
 * For this small example, "site_to_alignment" and "site_to_alignment_testing" are created automatically.
 * Even though the example contains only 200 training and testing sequences, the running time for the modeling part is very long since all models are considered. To make the running time reasonable it is possible to consider only a small part of the models by uncommenting line 194 in the "main.R" code (making parallel_vals = expand.grid(66,23,6,5)).
 
-
-
 # Getting started
 In order to use our workflow, clone the repository (git clone https://github.com/Kerenlh/sarscov2predictions.git).
-Replace the input variables in the ./vars directory with your desired reference sequence, aligned training and test sequences and a phylogenetic tree for the training sequecnes. Also create "site_to_alignment" and "site_to_alignment_testing" as explained above and add them to the ./vars directory.
+Replace the input variables in the ./vars directory with your desired reference sequence, aligned training and test sequences and a phylogenetic tree for the training sequences. Also create "site_to_alignment" and "site_to_alignment_testing" as explained above and add them to the ./vars directory.
 Next, go to the main directory and source the "main.R" file. 
 For higher efficiency, some parts of the code are needed to be done in parallel using multiple cores. Please see the next section for details. 
 
