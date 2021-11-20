@@ -449,6 +449,8 @@ create_codons_table_testing = function(codons_table,new_subs_testing,rel_ref_sit
   codons_table = cbind(codons_table,y)
   codons_table = add_syn_non_syn(codons_table)
   codons_table = cbind(codons_table,diff_seqs_num,amino_num)
+  codons_table$mat_peptide[which(codons_table$mat_peptide!="0")] = 1
+  codons_table$mat_peptide = as.numeric(codons_table$mat_peptide)
   
   all_sites = (unique(codons_table$ref_site))
   no_subs_sites = (unique(codons_table$ref_site
