@@ -18,31 +18,31 @@ In order to apply our method, the following input variables are required:
 
 1. "ref_seq.fasta" - The reference sequence in .fasta format. We used accession NC_045512.2 from the NCBI website as a reference sequence (https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType_s=Nucleotide&VirusLineage_ss=SARS-CoV-2,%20taxid:2697049).
 
-2. "training_seqs.txt" - Aligned training sequences. For aligning the sequences one can use the framework developed by Lanfear at https://github.com/roblanf/sarscov2phylo. When using this frame work "global.fa" is the desired training sequences alignment file.
+2. "training_seqs.txt" - Aligned training sequences. For aligning the sequences one can use the framework developed by Lanfear at https://github.com/roblanf/sarscov2phylo. When using this framework "global.fa" is the desired training sequences alignment file.
 
 3. "tree.txt" - A phylogenetic tree of the training sequences in Newick format.
-For creating a tree one can use the framework developed by Lanfear at https://github.com/roblanf/sarscov2phylo. When using this framework "ft_SH.tree" is the desired training tree.
+For creating a tree, one can use the framework developed by Lanfear at https://github.com/roblanf/sarscov2phylo. When using this framework, "ft_SH.tree" is the desired training tree.
 
 4. "site_to_alignment" and "site_to_alignment_testing": A matrix mapping the alignment site number to the site number at the reference sequence. This should be done carefully according to the alignment method.
 
-We provide here (in the file "main.R") an example for creating this matrix when no sites from the reference sequence are omitted. In case some sites from the reference sequence are omitted this should be done with a tailored code. When using the framework developed by Lanfear for alignment, one should check the "problematic_sites_sarsCov2.mask.vcf" file to find which sites were omitted.
+We provide here (in the file "main.R") an example for creating this matrix when no sites from the reference sequence are omitted. In case some sites from the reference sequence are omitted, this should be done with a tailored code. When using the framework developed by Lanfear for alignment, one should check the "problematic_sites_sarsCov2.mask.vcf" file to find which sites were omitted.
 
 5. "testing_seqs.aln": Aligned test sequences.
 
 * All input variables above should be saved in a directory called "vars" under the main directory.
 * We provide a very small example of training and test sequences (200 sequences each) along with a phylogenetic tree inferred for the training sequences, downloaded from the NCBI website. https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType_s=Nucleotide&VirusLineage_ss=SARS-CoV-2,%20taxid:2697049
 * For this small example, "site_to_alignment" and "site_to_alignment_testing" are created automatically.
-* Even though the example contains only 200 training and testing sequences, the running time for the modeling part is very long since all models are considered. To make the running time reasonable it is possible to consider only a small part of the models by uncommenting line 194 in the "main.R" code (making parallel_vals = expand.grid(66,23,6,5)).
+* Even though the example contains only 200 training and testing sequences, the running time for the modeling part is very long since all models are considered. To make the running time reasonable, it is possible to consider only a small part of the models by uncommenting line 194 in the "main.R" code (making parallel_vals = expand.grid(66,23,6,5)).
 
 # Getting started
 In order to use our workflow, clone the repository (git clone https://github.com/Kerenlh/sarscov2predictions.git).
-Replace the input variables in the ./vars directory with your desired reference sequence, aligned training and test sequences and a phylogenetic tree for the training sequences. Also create "site_to_alignment" and "site_to_alignment_testing" as explained above and add them to the ./vars directory.
+Replace the input variables in the ./vars directory with your desired reference sequence, aligned training and test sequences, and a phylogenetic tree for the training sequences. Also create "site_to_alignment" and "site_to_alignment_testing" as explained above and add them to the ./vars directory.
 Next, go to the main directory and source the "main.R" file. 
 For higher efficiency, some parts of the code are needed to be done in parallel using multiple cores. Please see the next section for details. 
 
 # Running time note
 Some parts of the "main.R" code take a very long time and should be done in parallel. We wrote some of them as the inner part of for loops in the "main.R" code so that it will be easier to run them on multiple cores.
-The time consuming functions are:
+The time-consuming functions are:
 
 "ASR.R" (Ancestral sequence reconstruction per site).
 
