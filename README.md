@@ -51,4 +51,4 @@ The function "datasets" in "datasets.R".
 The function "get_unique_regs" in "get_unique_regs.R".
 
 # How to cite
-Keren Levinstein Hallak, Saharon Rosset. Modeling SARS-CoV-2 substitution processes: predicting the next variant, 11 August 2021, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-654547/v1]
+Levinstein Hallak, K., & Rosset, S. (2022). Statistical modeling of SARS-CoV-2 substitution processes: predicting the next variant. Communications Biology, 5(1), 1-8. https://www.nature.com/articles/s42003-022-03198-y
