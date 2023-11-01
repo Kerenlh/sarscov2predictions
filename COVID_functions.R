@@ -29,6 +29,10 @@ short_names_tree = function(tree){
     if(tmp2[[1]][length(tmp2[[1]])]=="_"){
       tmp = paste0(tmp2[[1]][1:(length(tmp2[[1]])-1)],collapse = "")
     }
+    tmp2 = strsplit(tmp,"")
+    if(tmp2[[1]][1]=="'"){
+      tmp = paste0(tmp2[[1]][2:(length(tmp2[[1]]))],collapse = "")
+    }
     new_names_tree = c(new_names_tree, tmp)
   }
   tree$tip.label = new_names_tree
